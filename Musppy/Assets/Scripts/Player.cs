@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere((Vector2)foot.position, collisionRadius);
     }
     */
+    
 
     void Animations()
     {
@@ -104,10 +105,11 @@ public class Player : MonoBehaviour
         anim.SetBool("JumpFall", !onFloor);
         anim.SetBool("Walk", rb.velocity.x != 0f && onFloor);
     }
+    
 
     void Attack()
     {
-        anim.SetTrigger("Ataque");
+        anim.SetTrigger("Shoot");
         nextAttack = Time.time + attackRate;
     }
 
