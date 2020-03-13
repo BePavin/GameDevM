@@ -31,3 +31,17 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+*.dll
+
+Musppy/Library/ScriptAssemblies/
+
+Musppy/Library/metadata/
+
+Musppy/Temp/
+
+Musppy/Library/assetDatabase3
+
+Musppy/Library/EditorInstance.json
+
+Musppy/Library/shadercompiler-UnityShaderCompiler.exe0.log
