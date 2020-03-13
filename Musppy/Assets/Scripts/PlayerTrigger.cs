@@ -19,6 +19,11 @@ public class PlayerTrigger : MonoBehaviour
         {
             playerScript.DamagePlayer();
         }
+
+        if (collision.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
 }
