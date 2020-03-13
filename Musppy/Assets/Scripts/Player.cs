@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     public float attackRate;
 
     private float nextAttack;
+    private CameraFollow cameraScript;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        cameraScript = GameObject.Find("Main Camera").GetComponent<CameraFollow>();
 
     }
 
@@ -115,6 +117,8 @@ public class Player : MonoBehaviour
 
     IEnumerator DamageEffect()
     {
+        cameraScript.ShakeCamera(0.8f, 0.08f);
+
         for (float i = 0f; i < 1; i += 0.1f)
         {
             sprite.enabled = false;

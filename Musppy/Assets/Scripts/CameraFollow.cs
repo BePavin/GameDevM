@@ -6,6 +6,8 @@ public class CameraFollow : MonoBehaviour
 {
     private Vector2 velocity;
     private Transform player;
+    private float shakeTimer;
+    private float shakeAmount;
 
     public float smoothTimeX;
     public float smoothTimeY;
@@ -20,7 +22,13 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(shakeTimer >= 0f)
+        {
+            Vector2 shakePos = Random.insideUnitCircle * shakeAmount;
+            transform.position = new Vector3(transform.position.x + shakePos.x, transform.position.y + shakePos.y, transform.position.z);
+        }
 
+        shakeTimer -= Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -30,4 +38,11 @@ public class CameraFollow : MonoBehaviour
 
         transform.position = new Vector3(posX, posY, transform.position.z);
     }
+
+    public void ShakeCamera(float Timer, float Amount)
+    {
+        shakeTimer = Timer;
+        shakeAmount = Amount;
+    }
 }
+    

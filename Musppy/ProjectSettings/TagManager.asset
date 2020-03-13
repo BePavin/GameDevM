@@ -19,7 +19,7 @@ TagManager:
   - Player
   - Enemy
   - Trigger
-  - 
+  - Map
   - 
   - 
   - 
@@ -51,4 +51,13 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 3860113237
+    locked: 0
+  - name: Enemy
+    uniqueID: 877216037
+    locked: 0
+  - name: Player
+    uniqueID: 417654999
+    locked: 0
+  - name: Water
+    uniqueID: 3583338477
     locked: 0
