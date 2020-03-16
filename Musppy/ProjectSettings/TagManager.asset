@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Shoot
   - Coin
+  - Head
+  - Water
   layers:
   - Default
   - TransparentFX

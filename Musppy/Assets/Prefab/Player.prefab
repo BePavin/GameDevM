@@ -155,15 +155,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282e68b9fa68c5f4988e1ce4e3ce4973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 5
   jumpForce: 15
-  health: 5
+  health: 2
   foot: {fileID: 555542725889582962}
   collisionRadius: 0.15
   layerGround:
     serializedVersion: 2
     m_Bits: 256
   attackRate: 0
+  head: {fileID: 3961782641294575076, guid: f66723ddc82ca7943b2cebf0c1b44372, type: 3}
+  fxHurt: {fileID: 8300000, guid: 065bc9ce034f3d3478307ee840d6ecef, type: 3}
+  fxJump: {fileID: 8300000, guid: e8733d8f018769c4583a944678e9bf9a, type: 3}
+  fxAttack: {fileID: 8300000, guid: cecebb9af3ea37643bfe4f85d08edcfb, type: 3}
 --- !u!114 &555542725263539545
 MonoBehaviour:
   m_ObjectHideFlags: 0

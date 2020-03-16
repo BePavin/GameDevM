@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -22,9 +23,14 @@ public class Player : MonoBehaviour
     private bool jump = false;
 
     public float attackRate;
+    public GameObject head;
 
     private float nextAttack;
     private CameraFollow cameraScript;
+
+    public AudioClip fxHurt;
+    public AudioClip fxJump;
+    public AudioClip fxAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +55,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton("Fire1") && onFloor && Time.time > nextAttack)
         {
-            Attack();
+            SoundManager.instance.PlaySound(fxAttack);
+            Attack();        
         }
     }
 
@@ -61,6 +68,7 @@ public class Player : MonoBehaviour
         {
             jump = false;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            SoundManager.instance.PlaySound(fxJump);
         }
     }
 
@@ -138,13 +146,38 @@ public class Player : MonoBehaviour
             health--;
             StartCoroutine(DamageEffect());
 
+            SoundManager.instance.PlaySound(fxHurt);
+
             if (health <= 0)
             {
-                Destroy(gameObject);
+                PlayerDeath();                            
+                //Destroy(gameObject);
+
+                Invoke("ReloadLevel", 0.7f);
+                gameObject.SetActive(false);
             }
         }
+    }
 
+    public void DamageWater()
+    {
+        health = 0;
+        DamagePlayer();
+        Invoke("ReloadLevel", 0.7f);
+        gameObject.SetActive(false);
+    }
 
+    public void PlayerDeath()
+    {
+        GameObject cloneHead = Instantiate(head, transform.position, Quaternion.identity);
+        Rigidbody2D rbHead = cloneHead.GetComponent<Rigidbody2D>();
+
+        rbHead.AddForce(Vector3.up * 10000);
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 }
 
